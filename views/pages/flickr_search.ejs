@@ -1,0 +1,41 @@
+<!-- Commentary -->
+
+<%- include('../partials/header'); -%>
+<%- include('../partials/nav'); -%>
+<body>
+  <main>
+    <div class="" style="background-color: #0f415c;">
+      <div class="container-fluid" style="padding: 3%; ">
+        <form class="search_form">
+          <div class="row">
+
+            <div class="input-group mt-1 pl-5 pr-5">
+	      <input id="search" type="text" name="search" placeholder="Search"
+		     class="form-control" aria-label="Text input with
+						      dropdown
+						      button">
+	      <select class="form-select ml-5" id="per_page" name="per_page" aria-label="Disabled select example">
+		<option selected>How many images to show?</option>
+		<option value="30">30</option>
+		<option value="50">50</option>
+		<option value="70">70</option>
+	      </select>
+	      <input class="btn btn-outline-success" type="button" name="submit"
+		     onclick="makeApiCall()" value="Submit"/>
+	    </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Show the images -->
+    <div class="container-lg" style="margin-top: 2%;">
+      <% if (error) { %>
+        <div class="alert alert-danger"><%- message %></div>
+      <% } %>
+      <%- include('../partials/reviews', {items: items}); %>
+    </div>
+
+  </main>
+  
+  <%- include('../partials/footer'); -%>

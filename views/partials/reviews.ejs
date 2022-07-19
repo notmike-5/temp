@@ -1,0 +1,38 @@
+<!--
+  TODO: Update the EJS code to insert the following information:
+    - display_title
+    - url
+    - suggested_link_text
+    - publication_date
+    - summary_short
+
+  HINT: Not sure how to display the reviews, check out Bootstrap cards here: https://getbootstrap.com/docs/4.0/components/card/
+-->
+<% if (items) { %>
+    <% var cards = ''; %>
+    <!-- use search results to populate cards -->
+    <% cards += '<div class="card-columns">'; %>
+    <% for (const movie of items) { %>
+        <!-- grab the info we need from the response -->
+    	<% var image_source = ''; %>
+        <% var title = movie.display_title; %>
+	<% var movie_url = movie.link.url; %>
+        <% var link_text = movie.link.suggested_link_text; %>
+	<% var pub_date = movie.publication_date; %>
+	<% var summary = movie.summary_short; %>
+	
+        <% cards +=
+	   '<div class="card" style="width: 18rem;">'
+	   +  '<div class="card-body">'
+	   + '<h5 class="card-title"><b>' + title + '</b></h5>'
+	   + '<b>Link to review:</b> ' + '<br>'
+	   + '<a class="btn btn-primary" href= ' + movie_url + '>' + link_text + '</a>'
+	   + '<br>' + '<b>Publication Date:</b><br>'
+	   + pub_date + '<br>' + '<b>Review Summary:</b><br>'
+	   + summary
+	   + '</div> </div>'; %>
+	<% } %>
+    <% cards += '</div>'; %>
+      
+    <%- cards %>
+<% } %>
